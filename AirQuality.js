@@ -1,3 +1,9 @@
+//mongoimport --uri "mongodb+srv://adriandd1021:AirQuality1@cluster0.ywxe5we.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0" 
+//--type CSV --file "C:\Users\adria\Desktop\Project 3\worldairquality.csv" --fields "Country Code","City","Location","Coordinates",
+//"Latitude","Longitude","Pollutant","Source Name","Unit","Value","Last Updated","Country Label"
+
+
+
 const { MongoClient, ServerApiVersion } = require('mongodb');
 const uri = "mongodb+srv://adriandd1021:AirQuality1@cluster0.ywxe5we.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
 // Create a MongoClient with a MongoClientOptions object to set the Stable API version
@@ -21,3 +27,5 @@ async function run() {
   }
 }
 run().catch(console.dir);
+
+
