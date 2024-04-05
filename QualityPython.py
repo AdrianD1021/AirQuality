@@ -2,7 +2,13 @@ from pymongo import MongoClient
 import pymongo
 import datetime
 
-client = MongoClient('mongodb+srv://adriandd1021:AirQuality1@cluster0.ywxe5we.mongodb.net/')
+user = open("user.txt")
+user = user.read()
+
+password = open("pw.txt") # SAMPLE DIRECTORY AND FILE NAME, CREATE FILE, CHANGE DIR
+password = password.read()
+
+client = MongoClient(f'mongodb+srv://adriandd1021:{password}@cluster0.ywxe5we.mongodb.net/')
 
 collection = client['test']['worldairquality']
 
