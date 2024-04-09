@@ -4,13 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" href="{{url_for('static', filename='css/styles.css')}}"/>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://unpkg.com/maplibre-gl/dist/maplibre-gl.js"></script>
 
     {% if title %}
         <title>Flask app {{ title }}</title>
     {% else %}
         <title>Flask app - Else</title>
     {% endif %}
+    <style>
+        body { margin: 0; padding: 0; }
+        html, body, #map { height: 100%; }
+    </style>
+
 </head>
 
 <body>
@@ -32,12 +37,21 @@
             
         </form>
         <h3>{{country_search}}</h3>
+        <h3>{{latitude}}</h3>
+        <h3>{{longitude}}</h3>
     </div>
 
 
-    <div class ="canvas">
-        
-    </div>
+    <!-- <div id="map"></div>
+    <script>
+        var map = new maplibregl.Map({
+            container: 'map', // container id
+            style: 'https://api.maptiler.com/maps/streets/style.json?key=get_your_own_OpIi9ZULNHzrESv6T2vL', // style URL
+            center: [0, 0], // starting position [lng, lat]
+            zoom: 1 // starting zoom
+        });
+    </script> -->
+    
 </body>
 
 

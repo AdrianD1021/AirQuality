@@ -25,9 +25,15 @@ def search():
         search_field = request.form.get("search_field")
         try:
             country_search = collection.find_one({ "Country Code": search_field })
-            return render_template('index.html', title = "Results Found", country_search = country_search)
+            latitude = country_search['Latitude']
+            longitude = country_search['Longitude']
+            return render_template('index.html', title = "Results Found", country_search = country_search, latitude = latitude, longitude =longitude)
         except Exception as e:
             return e
+        
+@app.route("/results")
+def results():
+    return render_template('results.html', title = "Layout Page")
 
 if __name__ == "__main__":
     app.run(debug=True)
