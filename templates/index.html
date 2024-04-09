@@ -3,11 +3,41 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MongDB Flask App</title>
 	<link rel="stylesheet" href="{{url_for('static', filename='css/styles.css')}}"/>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    {% if title %}
+        <title>Flask app {{ title }}</title>
+    {% else %}
+        <title>Flask app - Else</title>
+    {% endif %}
 </head>
+
 <body>
+    <div>
     <h1>Test</h1>
+    </div>
+
+    <div class ="search_field">
+        <form method="POST">
+            <p>
+            <label for="search_field"> Select a Country </label>
+            </p>
+            <p>
+                <input type="text" name="search_field" id="search_field" placeholder="Select a country">
+            </p>
+            <p>
+            </p>
+            <button type="submit">Search</button>
+            
+        </form>
+        <h3>{{country_search}}</h3>
+    </div>
+
+
+    <div class ="canvas">
+        
+    </div>
 </body>
 
 

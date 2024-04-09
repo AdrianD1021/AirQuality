@@ -1,30 +1,33 @@
 from pymongo import MongoClient
+from flask_pymongo import PyMongo
 import pymongo
 import datetime
 from flask import Flask, render_template, url_for, request, redirect
 
 # Grab User/Password - Ensure these files are part of your .gitignore
-user = open("user.txt")
-user = user.read()
-
-password = open("pw.txt")
-password = password.read()
+connection_string = open("connection_string.txt")
+connection_string = connection_string.read()
 
 # Assign Flask app
 app = Flask(__name__)
 
 #DB Connetion String
-client = MongoClient(f'mongodb+srv://{user}:{password}@cluster0.ywxe5we.mongodb.net/')
+client = pymongo.MongoClient(connection_string)
+collection = client['test']['worldairquality']
+
+@app.route("/")
+def index():
+    return render_template('index.html', title = "Layout Page")
 
 @app.route("/", methods=['GET', 'POST'])
-
-def index():
-    return render_template('index.html')
-
-
-# collection = client['test']['worldairquality']
-# result = collection.find_one({ "Country Code": "JP" })
-# print("Document found:\n", result)
+def search():
+    if request.method == "POST":
+        search_field = request.form.get("search_field")
+        try:
+            country_search = collection.find_one({ "Country Code": search_field })
+            return render_template('index.html', title = "Results Found", country_search = country_search)
+        except Exception as e:
+            return e
 
 if __name__ == "__main__":
     app.run(debug=True)
