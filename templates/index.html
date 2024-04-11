@@ -43,7 +43,13 @@
     <div>
         {{iframe|safe}}
     </div>
-
+    {% if magnitude %}
+    <iframe src="static/folium.html" title="Folium Map" width="400" height="300">
+    </iframe>
+    {% else %}
+    You haven't submitted a search yet.
+    {% endif %}
+    <div id="map"></div>
 
     <!-- <div id="map"></div>
     <script>
