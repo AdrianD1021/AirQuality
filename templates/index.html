@@ -20,16 +20,17 @@
 
 <body>
     <div>
-    <h1>Test</h1>
+    <h1>Earthquake Search</h1>
     </div>
 
     <div class ="search_field">
         <form method="POST">
             <p>
-            <label for="search_field"> Select a Country </label>
+            <label for="search_field"> Select a Magnitude Range</label>
             </p>
             <p>
-                <input type="text" name="search_field" id="search_field" placeholder="Select a country">
+                <input type="text" name="min_mag" id="min_mag" placeholder="2.0">
+                <input type="text" name="max_mag" id="max_mag" placeholder="7.4">
             </p>
             <p>
             </p>
@@ -39,13 +40,14 @@
         <h3>{{country_search}}</h3>
         <h3>{{latitude}}</h3>
         <h3>{{longitude}}</h3>
+        <h3>MAX MAG = {{max_mag}}</h3>
     </div>
-    <div>
+    <!-- <div>
         {{iframe|safe}}
-    </div>
+    </div> -->
     {% if magnitude %}
-    <iframe src="static/folium.html" title="Folium Map" width="400" height="300">
-    </iframe>
+    <center><iframe src="static/folium.html" title="Folium Map" width="800" height="600">
+    </iframe></center>
     {% else %}
     You haven't submitted a search yet.
     {% endif %}
