@@ -42,26 +42,15 @@
         <h3>{{longitude}}</h3>
         <h3>MAX MAG = {{max_mag}}</h3>
     </div>
-    <!-- <div>
-        {{iframe|safe}}
-    </div> -->
+
+    <div id="map">
     {% if magnitude %}
-    <center><iframe src="static/folium.html" title="Folium Map" width="800" height="600">
-    </iframe></center>
+    <iframe src="static/folium.html" title="Folium Map" width="800" height="600">
+    </iframe>
     {% else %}
     You haven't submitted a search yet.
     {% endif %}
-    <div id="map"></div>
-
-    <!-- <div id="map"></div>
-    <script>
-        var map = new maplibregl.Map({
-            container: 'map', // container id
-            style: 'https://api.maptiler.com/maps/streets/style.json?key=get_your_own_OpIi9ZULNHzrESv6T2vL', // style URL
-            center: [0, 0], // starting position [lng, lat]
-            zoom: 1 // starting zoom
-        });
-    </script> -->
+    </div>
     
 </body>
 

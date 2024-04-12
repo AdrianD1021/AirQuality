@@ -57,6 +57,11 @@ def search():
 @app.route("/folium")
 def folium_endpoint():
     return render_template("folium.html", title="Folium Page")
+
+
+@app.route("/graph")
+def graph():
+    return
         
 if __name__ == "__main__":
     app.run(debug=True)
