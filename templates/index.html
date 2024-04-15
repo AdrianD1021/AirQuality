@@ -3,8 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="stylesheet" href="{{url_for('static', filename='css/styles.css')}}"/>
-    <script src="https://unpkg.com/maplibre-gl/dist/maplibre-gl.js"></script>
+	<link rel="stylesheet" href="{{url_for('static', filename='styles.css')}}"/>
+
+    <link href="https://db.onlinewebfonts.com/c/a1932449c96443eef1a950f01dd62a8d?family=Earthquake+MF" rel="stylesheet">
 
     {% if title %}
         <title>Flask app {{ title }}</title>
@@ -37,11 +38,13 @@
             <button type="submit">Search</button>
             
         </form>
-        <h3>{{country_search}}</h3>
-        <h3>{{latitude}}</h3>
-        <h3>{{longitude}}</h3>
-        <h3>MAX MAG = {{max_mag}}</h3>
+
+        <!-- <h3>{{magnitude}}</h3>
+        <h3>Latitude: {{latitude}}</h3>
+        <h3>Longitude: {{longitude}}</h3>
+        <h3>MAX MAG = {{max_mag}}</h3> -->
     </div>
+    <br>
 
     <div id="map">
     {% if magnitude %}

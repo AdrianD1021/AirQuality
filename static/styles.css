@@ -1,0 +1,41 @@
+@import url(https://db.onlinewebfonts.com/c/a1932449c96443eef1a950f01dd62a8d?family=Earthquake+MF);
+
+@font-face {
+    /* font-family: "Earthquake MF";
+    src: url("https://db.onlinewebfonts.com/t/a1932449c96443eef1a950f01dd62a8d.eot");
+    src: url("https://db.onlinewebfonts.com/t/a1932449c96443eef1a950f01dd62a8d.eot?#iefix")format("embedded-opentype"),
+    url("https://db.onlinewebfonts.com/t/a1932449c96443eef1a950f01dd62a8d.woff2")format("woff2"),
+    url("https://db.onlinewebfonts.com/t/a1932449c96443eef1a950f01dd62a8d.woff")format("woff"),
+    url("https://db.onlinewebfonts.com/t/a1932449c96443eef1a950f01dd62a8d.ttf")format("truetype"),
+    url("https://db.onlinewebfonts.com/t/a1932449c96443eef1a950f01dd62a8d.svg#Earthquake MF")format("svg"); */
+}
+
+
+body {
+  background-color: lightblue;
+}
+
+h1 {
+
+font-family: 'Earthquake MF';
+font-weight: 20;
+font-size: 100px;
+color:navy;
+text-transform: uppercase;
+position: relative;
+text-align: center;
+}
+
+div {
+    text-align: center;
+}
+
+
+h3 {
+
+text-align: center;
+font-family:Arial;
+font-size: 3rem;
+color: black;
+position: relative;
+}
