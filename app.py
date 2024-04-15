@@ -23,12 +23,14 @@ def index():
 def search():
     # Create basic Folium Map for page load
     m = folium.Map()
+
     if request.method == "POST":        
 
         # Grab field values     
         min_mag = request.form.get("min_mag")
         max_mag = request.form.get("max_mag")
 
+        # Look through results
         try:
             for eq in collection.find({"properties.mag": {"$gte": float(min_mag), "$lte": float(max_mag)}}):
 
@@ -38,7 +40,7 @@ def search():
                 magnitude = eq['properties']['mag']
                 link = eq['properties']['url']
                 
-                            
+                # For every result that has a location, populate HTML and add a marker to map.                     
                 if eq and latitude and longitude:
 
                     popup_html = """

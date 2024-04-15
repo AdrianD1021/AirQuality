@@ -8,9 +8,9 @@
     <link href="https://db.onlinewebfonts.com/c/a1932449c96443eef1a950f01dd62a8d?family=Earthquake+MF" rel="stylesheet">
 
     {% if title %}
-        <title>Flask app {{ title }}</title>
+        <title>Earthquake Search - {{ title }}</title>
     {% else %}
-        <title>Flask app - Else</title>
+        <title>Earthquake Search</title>
     {% endif %}
     <style>
         body { margin: 0; padding: 0; }
@@ -38,11 +38,6 @@
             <button type="submit">Search</button>
             
         </form>
-
-        <!-- <h3>{{magnitude}}</h3>
-        <h3>Latitude: {{latitude}}</h3>
-        <h3>Longitude: {{longitude}}</h3>
-        <h3>MAX MAG = {{max_mag}}</h3> -->
     </div>
     <br>
 
@@ -56,6 +51,4 @@
     </div>
     
 </body>
-
-
 </html>
