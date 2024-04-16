@@ -1,7 +1,9 @@
+import folium.plugins
 from pymongo import MongoClient
 import pymongo
 import folium
 from flask import Flask, render_template, url_for, request, redirect
+from folium.plugins import HeatMap
 import branca
 
 # Grab Connection String - Ensure this file are part of your .gitignore
@@ -24,8 +26,8 @@ def search():
     # Create basic Folium Map for page load
     m = folium.Map()
 
-    if request.method == "POST":        
-
+    if request.method == "POST":  
+     
         # Grab field values     
         min_mag = request.form.get("min_mag")
         max_mag = request.form.get("max_mag")
@@ -39,6 +41,13 @@ def search():
                 latitude = eq['geometry']['coordinates'][1]
                 magnitude = eq['properties']['mag']
                 link = eq['properties']['url']
+
+                if magnitude <= 3.0:
+                    color = 'blue'
+                elif magnitude > 3.0 and magnitude <= 6.0:
+                    color = 'orange'
+                else:
+                    color = 'red'
                 
                 # For every result that has a location, populate HTML and add a marker to map.                     
                 if eq and latitude and longitude:
@@ -67,8 +76,10 @@ def search():
                     folium.Marker(
                         location=[latitude, longitude],
                         radius=10,
-                        popup=popup
+                        popup=popup,
+                        icon=folium.Icon(color=color)
                     ).add_to(m)
+
 
             m.save("static/folium.html")
 
@@ -91,7 +102,7 @@ def folium_endpoint():
 
 @app.route("/graph")
 def graph():
-    return
+    return render_template('graph.html', title = "Graph Page")
         
 if __name__ == "__main__":
     app.run(debug=True)
