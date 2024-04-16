@@ -31,6 +31,11 @@ def search():
         # Grab field values     
         min_mag = request.form.get("min_mag")
         max_mag = request.form.get("max_mag")
+        print(min_mag)
+
+        if not min_mag or not max_mag:
+            min_mag = 2.0
+            max_mag = 7.4
 
         # Look through results
         try:
@@ -42,9 +47,9 @@ def search():
                 magnitude = eq['properties']['mag']
                 link = eq['properties']['url']
 
-                if magnitude <= 3.0:
+                if magnitude <= 4.5:
                     color = 'blue'
-                elif magnitude > 3.0 and magnitude <= 6.0:
+                elif magnitude > 4.5 and magnitude <= 6.5:
                     color = 'orange'
                 else:
                     color = 'red'
@@ -103,6 +108,10 @@ def folium_endpoint():
 @app.route("/graph")
 def graph():
     return render_template('graph.html', title = "Graph Page")
+
+@app.route("/heatmap")
+def heatmap():
+    return render_template('map.html', title = "Map Page")
         
 if __name__ == "__main__":
     app.run(debug=True)
