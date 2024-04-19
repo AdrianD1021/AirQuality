@@ -6,12 +6,12 @@
 	<link rel="stylesheet" href="{{url_for('static', filename='styles.css')}}"/>
 
     <link href="https://db.onlinewebfonts.com/c/a1932449c96443eef1a950f01dd62a8d?family=Earthquake+MF" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
-    {% if title %}
-        <title>Bar Graph</title>
-    {% else %}
-        <title>Bar Graph</title>
-    {% endif %}
+
+    <title>Bar Graph</title>
+
+
     <style>
         body { margin: 0; padding: 0; }
         html, body, #map { height: 100%; }
@@ -20,9 +20,64 @@
 </head>
 
 <body>
-    <div><a href="{{ url_for('index') }}">Home</a></div>
-    <br>
     <div>
-    <img src="static\magnitude_occurances.png">
+        <h1>Earthquake Search</h1>
     </div>
+    <div><a href="{{ url_for('index') }}">Home</a> | <a href="{{ url_for('heatmap') }}">Heatmap</a></div>
+    <br>
+    <div class ="search_field">
+        <form method="POST">
+            <p>
+            <label for="search_field"> Select a Magnitude Range</label>
+            </p>
+            <p>
+                <input type="text" name="min_mag" id="min_mag" placeholder="2.0">
+                <input type="text" name="max_mag" id="max_mag" placeholder="7.4">
+            </p>
+            <p>
+            </p>
+            <button type="submit" class="submit">Search</button>
+            
+        </form>
+    </div>
+    <br>
+    {% if min_mag %}
+    <div>
+        <canvas id="myChart" width="400" height="300"></canvas>
+    </div>
+     
+    <script type="text/javascript">
+    const ctx = document.getElementById('myChart');
+    
+    // It appears the inline Javascript isn't a fan of Jinja - Not really sure how to get this to work with it's own .js file either. So we're stuck looking at the red.
+    new Chart(ctx, {
+        type: 'bar',
+        data: {
+        labels: {{ labels|safe }},
+        datasets: [{
+            label: 'Magnitude',
+            data: {{ data|safe}},
+            borderWidth: 1,
+            maxBarThickness: 30,
+            backgroundColor: [
+            'rgba(44,52,90, 0.8)',
+            'rgba(92,101,149, 0.8)',
+            'rgba(65,128,89, 0.8)',
+            'rgba(31,82,50, 0.8)',
+            'rgba(148,56,37, 0.8)',
+            'rgba(255,0,0, 0.8)'
+        ],
+        }]
+        },
+        options: {
+        responsive: false,
+        scales: {
+            y: {
+            beginAtZero: true
+            }
+        }
+        }
+    });
+    </script>
+    {% endif %}
 </body>
